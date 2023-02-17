@@ -19,7 +19,7 @@ public class Loan {
     @Column(name = "duration", nullable = false)
     private Integer duration;
 
-    @Lob
+
     @Column(name = "type", nullable = false)
     private String type;
 
@@ -88,5 +88,9 @@ public class Loan {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    private enum type{
+        QUICK, NORMAL, EXTENDED
     }
 }
