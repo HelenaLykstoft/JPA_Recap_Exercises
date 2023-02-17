@@ -35,6 +35,20 @@ public class Borrower {
     @OneToMany(mappedBy = "borrowerBorrower")
     private Set<Loan> loans = new LinkedHashSet<>();
 
+    // ? CONSTRUCTORS
+
+    public Borrower() {
+    }
+
+    public Borrower(String id, String name, LocalDate birthdate, String address) {
+        this.id = id;
+        this.name = name;
+        this.birthdate = birthdate;
+        this.address = address;
+    }
+
+    // ? GETTERS AND SETTERS
+
     public Set<Loan> getLoans() {
         return loans;
     }

@@ -1,2 +1,9 @@
-dk\jpa_recap_v2\HelloApplication.class
+entities\Loan.class
+Persistence\Interface.class
+entities\Library.class
 dk\jpa_recap_v2\HelloResource.class
+entities\Borrower.class
+dk\jpa_recap_v2\HelloApplication.class
+entities\Book.class
+entities\Loan$Type.class
+Persistence\LibraryFacade.class

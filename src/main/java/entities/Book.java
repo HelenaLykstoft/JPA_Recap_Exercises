@@ -9,7 +9,7 @@ import java.util.Set;
 public class Book {
     @Id
     @Column(name = "ISBN", nullable = false, length = 13)
-    private String id;
+    private String ISBN;
 
     @Column(name = "title", length = 45)
     private String title;
@@ -33,6 +33,20 @@ public class Book {
     @OneToMany(mappedBy = "bookIsbn")
     private Set<Loan> loans = new LinkedHashSet<>();
 
+    // ? CONSTRUCTORS
+    public Book() {
+    }
+
+    public Book(String ISBN, String title, String author, Integer numberOfPages, Integer publishingYear, String publisher) {
+        this.ISBN = ISBN;
+        this.title = title;
+        this.author = author;
+        this.numberOfPages = numberOfPages;
+        this.publishingYear = publishingYear;
+        this.publisher = publisher;
+    }
+
+    // ? GETTERS AND SETTERS
     public Set<Loan> getLoans() {
         return loans;
     }
@@ -90,11 +104,11 @@ public class Book {
     }
 
     public String getId() {
-        return id;
+        return ISBN;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.ISBN = ISBN;
     }
 
 }

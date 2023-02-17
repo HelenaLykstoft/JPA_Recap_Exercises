@@ -1,6 +1,7 @@
 package entities;
 
 import javax.persistence.*;
+import java.lang.reflect.Type;
 import java.time.Instant;
 
 @Entity
@@ -19,9 +20,9 @@ public class Loan {
     @Column(name = "duration", nullable = false)
     private Integer duration;
 
-
     @Column(name = "type", nullable = false)
-    private String type;
+    @Enumerated(EnumType.ORDINAL)
+    private Type type;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "borrower_borrower_id", nullable = false)
@@ -33,6 +34,21 @@ public class Loan {
 
     @Column(name = "returned")
     private Integer returned;
+
+    // ? CONSTRUCTOR
+
+    public Loan() {
+    }
+
+    public Loan(Instant startDate, Integer duration, Type type, Borrower borrowerBorrower, Book bookIsbn) {
+        this.startDate = startDate;
+        this.duration = duration;
+        this.type = type;
+        this.borrowerBorrower = borrowerBorrower;
+        this.bookIsbn = bookIsbn;
+    }
+
+    // ? GETTERS AND SETTERS
 
     public Integer getReturned() {
         return returned;
@@ -58,11 +74,11 @@ public class Loan {
         this.borrowerBorrower = borrowerBorrower;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Type type) {
         this.type = type;
     }
 
@@ -90,7 +106,7 @@ public class Loan {
         this.id = id;
     }
 
-    private enum type{
+    private enum Type{
         QUICK, NORMAL, EXTENDED
     }
 }
